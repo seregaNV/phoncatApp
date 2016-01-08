@@ -36,18 +36,52 @@ h2 {
 .item {
     height: 500px;
 }
-.phone-images img {
-    max-width: 100%;
+
+img.phone {
+    float: left;
+    margin-right: 3em;
+    margin-bottom: 2em;
+    background-color: white;
+    padding: 2em;
+    /*height: 300px;*/
+    width: 100%;
+    display: none;
+}
+
+img.phone:first-child {
+    display: block;
 }
 
 .phone-thumbs li {
     float: left;
-    width: 30%;
-    padding:16px;
+    width: 75px;
+    /*min-width: 100px;*/
+    /*max-width: 130px;*/
+    /*padding:16px;*/
 }
 .phone-thumbs li img {
     max-width: 100%;
 }
+ul.phone-thumbs {
+    /*width: 100%;*/
+    margin: 0;
+    list-style: none;
+}
+
+ul.phone-thumbs img:hover {
+    cursor: pointer;
+}
+
+
+.phone-images {
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    float: left;
+}
+
 .specs li {
     display: inline-block;
     vertical-align: top;

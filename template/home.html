@@ -9,18 +9,17 @@
             <p>This is an example of an application written in AngularJs.</p>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-lg-4 item" ng-repeat="phone in phones | filter:search">
+            <div class="col-xs-12 col-sm-6 col-lg-4 item phone-listing" ng-repeat="phone in phones | filter:search | orderBy:orderProp" ng-if="phone.status || !show">
                 <div class="preview-img text-center">
-                    <img ng-src="{{ phone.imageUrl }}" alt="{{ phone.name }}"/>
+                    <a href="/phones/{{ phone.id }}"><img ng-src="{{ phone.imageUrl }}" alt="{{ phone.name }}"/></a>
                         <span class="label"
                               ng-init="status = phone.status ? 'Are available' : 'Not available'"
                               ng-class="{'label-success':phone.status,'label-warning':!phone.status}">
                             {{ status }}
                         </span>
                 </div>
-                <h2>{{ phone.name }}</h2>
+                <h2><a href="/phones/{{ phone.id }}">{{ phone.name }}</a></h2>
                 <p>{{ phone.snippet }}</p>
-                <p><a class="btn btn-default" href="/phones/{{ phone.id }}" role="button">View details &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -34,5 +33,15 @@
                 </form>
             </div>
         </div>
+        <input type="checkbox" ng-model="show"> Show only available in stock.
+        <br>
+        <br>
+        <p>Sort by:</p>
+        <select class="form-control" ng-model="orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+        </select>
+        <br>
+        <p>Quantity results: {{ phones.length }}</p>
     </div>
 </div>

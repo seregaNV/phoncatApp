@@ -8,7 +8,7 @@
             /*http://localhost:8888/phones/phones.json?apiKey=someKeyThis*/
         }, {
             /*action: {method: <?>, params: <?>, isArray: <?>, ...}*/
-            update: {method: 'PUT', params: {phoneId: '@phone'}, isArray: true}
+            update: {method: 'PUT', params: {phoneId: 'phone'}, isArray: true} // {phoneId: '@phone'}
         });
     }
     angular.module('phonecatApp').factory('Phone', ['$resource', phoneFactory]);

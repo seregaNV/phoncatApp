@@ -24,6 +24,7 @@
             $scope.phones = data;
         });*/
         $scope.phones = Phone.query();
+        $scope.orderProp = 'age';
 
         /*Phone.query({phoneId: 'phones'}, function(data) {
             $scope.phones = data;
@@ -43,19 +44,13 @@
     function ContactCtrl($scope, $http, $location) {
     }
     function PhoneDetailCtrl($scope, $http, $location, $routeParams, Phone) {
-        $scope.phoneId = $routeParams.phoneId;
-        Phone.get({phoneId: $routeParams.phoneId}, function(data) {
-            $scope.phone = data;
-            $scope.mainImageUrl = data.images[0];
+        $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+            $scope.mainImageUrl = phone.images[0];
         });
-        //var url = 'phones/' + $routeParams.phoneId + '.json';
-        //$http.get(url).success(function(data) {
-        //    $scope.phone = data;
-        //    $scope.mainImageUrl = data.images[0];
-        //});
+
         $scope.setImage = function(imageUrl) {
             $scope.mainImageUrl = imageUrl;
-        }
+        };
     }
     angular.module('phonecatApp').controller('PhoneListCtrl', ['$scope', '$http', '$location', 'Phone', PhoneListCtrl]);
     angular.module('phonecatApp').controller('AboutCtrl', ['$scope', '$http', '$location', AboutCtrl]);
